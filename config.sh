@@ -18,6 +18,7 @@ function config_vim()
 	cp ./.vim  $HOME -a 
 	cp ./.vimrc $HOME 
 	cp ./.bashrc $HOME
+	cp ./.pythonstartup $HOME
 
 	# create tags
 	echo "Make tags in /usr/include"
