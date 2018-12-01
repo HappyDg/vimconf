@@ -6,6 +6,17 @@
 "    Created: 2010-01-01
 " LastChange: 2010-04-22
 
+" init vundle plugins for rust.vim
+" call vim :PluginInstall to install plugins at first time
+set nocompatible
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'racer-rust/vim-racer'
+Plugin 'rust-lang/rust.vim'
+call vundle#end()
+
+
 " GENERAL SETTINGS: {{{1
 " To use VIM settings, out of VI compatible mode.
 set nocompatible
@@ -175,6 +186,10 @@ set noswapfile
 set tags+=/usr/include/tags
 set tags+=./tags
 map ta :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+" rust vim configure
+let g:rustfmt_autosave = 1
+" let g:racer_cmd = ""
 
 
 set mouse-=a
