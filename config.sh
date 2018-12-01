@@ -24,6 +24,10 @@ function config_vim()
 	echo "Make tags in /usr/include"
 	cd /usr/include
 	sudo ctags -I __THROW -I __THROWNL -I __nonnull -R --c-kinds=+p --fields=+iaS --extra=+q
+
+	# install Vundle
+	mkdir -p  ~/.vim/bundle/
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
 bakup_vimconfig
