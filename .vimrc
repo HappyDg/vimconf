@@ -9,12 +9,14 @@
 " init vundle plugins for rust.vim
 " call vim :PluginInstall to install plugins at first time
 set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'racer-rust/vim-racer'
 Plugin 'rust-lang/rust.vim'
 call vundle#end()
+filetype on
 
 
 " GENERAL SETTINGS: {{{1
