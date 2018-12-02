@@ -15,6 +15,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'racer-rust/vim-racer'
 Plugin 'rust-lang/rust.vim'
+
+" use python install.py --racer-completer
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype on
 

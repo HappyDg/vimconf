@@ -26,7 +26,7 @@ function config_vim()
 	sudo ctags -I __THROW -I __THROWNL -I __nonnull -R --c-kinds=+p --fields=+iaS --extra=+q
 
 	# install Vundle
-	mkdir -p  ~/.vim/bundle/
+	mkdir -p  ~/.vim/bundle/YouCompleteMe
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
