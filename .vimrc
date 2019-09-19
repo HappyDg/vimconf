@@ -195,6 +195,10 @@ map ta :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " rust vim configure
 let g:rustfmt_autosave = 1
 " let g:racer_cmd = ""
-
+set hidden
+" set racer command path
+let g:racer_cmd = "<path-to-racer>/target/release/racer"
+" set rust src env
+let $RUST_SRC_PATH="<path-to-rust-srcdir>/src/"
 
 set mouse-=a
