@@ -192,6 +192,71 @@ set tags+=/usr/include/tags
 set tags+=./tags
 map ta :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
+autocmd BufNewFile *.[ch],*.hpp,*.cpp,Makefile,makefile,*.mk,*.sh exec ":call SetTitle()"
+
+func SetComment()
+     call setline(1,          "/*************************************************************")
+     call append(line("."),   " *   Copyright (C) ".strftime("%Y")." All rights reserved.")
+     call append(line(".")+1, " *   ")
+     call append(line(".")+2, " *   Descraption: TODO")
+     call append(line(".")+3, " *                ")
+
+     call append(line(".")+4, " *   FileName  : ".expand("%:t"))
+     call append(line(".")+5, " *   Author    : lelongz")
+     call append(line(".")+6, " *   Create    : ".strftime("%Y-%m-%d"))
+     call append(line(".")+7, " *   Version   : V0.1.0")
+     call append(line(".")+8, " *")
+     call append(line(".")+9, "**************************************************************/")
+endfunc
+
+func SetTitle()
+        if &filetype == 'make'
+                "call SetComment()
+                call append(line(".")+10, "")
+
+        elseif &filetype == 'sh'
+                "call SetComment()
+                call append(line(".")+10,"#!/usr/bin/env sh")
+
+        else
+             call SetComment()
+             if expand("%:e") == 'hpp'
+              call append(line(".")+10, "#ifndef _".toupper(expand("%:t:r"))."_H")
+              call append(line(".")+11, "#define _".toupper(expand("%:t:r"))."_H")
+              call append(line(".")+12, "#ifdef __cplusplus")
+              call append(line(".")+13, "extern \"C\"")
+              call append(line(".")+14, "{")
+              call append(line(".")+15, "#endif")
+              call append(line(".")+16, "")
+              call append(line(".")+17, "#ifdef __cplusplus")
+              call append(line(".")+18, "}")
+              call append(line(".")+19, "#endif")
+              call append(line(".")+20, "#endif //".toupper(expand("%:t:r"))."_H")
+
+             elseif expand("%:e") == 'h'
+                call append(line(".")+10, "#pragma once")
+             elseif &filetype == 'c'
+                      call append(line(".")+10,"#include \"".expand("%:t:r").".h\"")
+             elseif &filetype == 'cpp'
+                      call append(line(".")+10, "#include \"".expand("%:t:r").".h\"")
+             endif
+        endif
+endfunc
+
+func SetFunComment()
+    call append(line("."),   "/**")
+    call append(line(".")+1, " *   @brief  -")
+    call append(line(".")+2, " *           -")
+    call append(line(".")+3, " *   @param  -")
+    call append(line(".")+4, " *   @retval -")
+    call append(line(".")+5, " *   @note   none")
+    call append(line(".")+6, " */")
+
+endfunc
+nmap <F7> :call SetFunComment()<cr>j<cr>o
+
+
+
 " rust vim configure
 let g:rustfmt_autosave = 1
 " let g:racer_cmd = ""
@@ -201,4 +266,4 @@ let g:racer_cmd = "<path-to-racer>/target/release/racer"
 " set rust src env
 let $RUST_SRC_PATH="<path-to-rust-srcdir>/src/"
 
-set mouse-=a
+"set mouse-=a
